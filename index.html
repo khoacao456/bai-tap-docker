@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Docker Demo</title>
+</head>
+<body>
+    <h1>Demo Docker: PHP + MySQL</h1>
+    <div id="result">Đang tải dữ liệu từ Database...</div>
+
+    <script>
+        fetch('api.php')
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('result').innerText = data.message;
+            })
+            .catch(err => {
+                document.getElementById('result').innerText = "Lỗi kết nối!";
+            });
+    </script>
+</body>
+</html>

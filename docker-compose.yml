@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  # Dịch vụ 1: Website của bạn
+  web:
+    build: .
+    ports:
+      - "8080:80"  # Chạy ở localhost:8080
+    environment:
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASS=123456
+      - DB_NAME=docker_demo
+    depends_on:
+      - db
+
+  # Dịch vụ 2: Cơ sở dữ liệu MySQL
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: docker_demo
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
